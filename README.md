@@ -7,7 +7,7 @@ Pour aller sur le site en *production*, merci de suivre ce lien : https://gossip
 ### Marche à suivre
 
 ```
-git clone https://github.com/hfigueir/Gossip-Project-Facebook-style
+https://github.com/hilal-w/Gossip-Project-Facebook-style-hilal.git
 bundle install
 heroku run rails db:migrate
 heroku run rails db:seed
