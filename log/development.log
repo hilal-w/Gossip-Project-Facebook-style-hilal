@@ -1,0 +1,478 @@
+  [1m[35m (373.2ms)[0m  [1m[35mCREATE DATABASE "my_app_development" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (286.4ms)[0m  [1m[35mCREATE DATABASE "my_app_test" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (13.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:9
+  [1m[35m (13.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ bin/rails:9
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4346549080646495835)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to DeviseCreateMoussaillons (20180807200312)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (10.0ms)[0m  [1m[35mCREATE TABLE "moussaillons" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" inet, "last_sign_in_ip" inet, "username" character varying, "sign_up_code" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20180807200312_devise_create_moussaillons.rb:5
+  [1m[35m (5.3ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_moussaillons_on_email" ON "moussaillons"  ("email")[0m
+  ↳ db/migrate/20180807200312_devise_create_moussaillons.rb:41
+  [1m[35m (5.0ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_moussaillons_on_reset_password_token" ON "moussaillons"  ("reset_password_token")[0m
+  ↳ db/migrate/20180807200312_devise_create_moussaillons.rb:42
+  [1m[36mActiveRecord::SchemaMigration Create (1.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20180807200312"]]
+  ↳ bin/rails:9
+  [1m[35m (2.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to CreateGossips (20180807200421)
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (12.8ms)[0m  [1m[35mCREATE TABLE "gossips" ("id" bigserial primary key, "content" text, "moussaillon_id" bigint, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_eb6d8a272e"
+FOREIGN KEY ("moussaillon_id")
+  REFERENCES "moussaillons" ("id")
+)[0m
+  ↳ db/migrate/20180807200421_create_gossips.rb:3
+  [1m[35m (6.9ms)[0m  [1m[35mCREATE  INDEX  "index_gossips_on_moussaillon_id" ON "gossips"  ("moussaillon_id")[0m
+  ↳ db/migrate/20180807200421_create_gossips.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20180807200421"]]
+  ↳ bin/rails:9
+  [1m[35m (2.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.9ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Create (0.7ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-10-31 19:47:38.375668"], ["updated_at", "2019-10-31 19:47:38.375668"]]
+  ↳ bin/rails:9
+  [1m[35m (2.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(4346549080646495835)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Started GET "/welcome/hilal" for 127.0.0.1 at 2019-10-31 20:48:20 +0100
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  
+ActionController::RoutingError (No route matches [GET] "/welcome/hilal"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2019-10-31 20:48:26 +0100
+Processing by GossipsController#index as HTML
+  Rendering gossips/index.html.erb within layouts/application
+  Rendered gossips/index.html.erb within layouts/application (3.5ms)
+  Rendered layouts/_header.html.erb (0.8ms)
+Completed 200 OK in 1558ms (Views: 1549.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/moussaillons/sign_up" for 127.0.0.1 at 2019-10-31 20:48:39 +0100
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering moussaillons/registrations/new.html.erb within layouts/application
+DEPRECATION WARNING: [Devise] `DeviseHelper.devise_error_messages!`
+is deprecated and it will be removed in the next major version.
+To customize the errors styles please run `rails g devise:views` and modify the
+`devise/shared/error_messages` partial.
+ (called from block in _app_views_moussaillons_registrations_new_html_erb___76906214960809837_47129201466160 at /home/hilal/Bureau/Gossip-Project-Facebook-style-master/app/views/moussaillons/registrations/new.html.erb:4)
+  Rendered moussaillons/shared/_links.html.erb (18.5ms)
+  Rendered moussaillons/registrations/new.html.erb within layouts/application (24.7ms)
+  Rendered layouts/_header.html.erb (0.7ms)
+Completed 200 OK in 71ms (Views: 43.6ms | ActiveRecord: 6.8ms)
+
+
+Started GET "/moussaillons/sign_up" for 127.0.0.1 at 2019-10-31 21:00:00 +0100
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering moussaillons/registrations/new.html.erb within layouts/application
+DEPRECATION WARNING: [Devise] `DeviseHelper.devise_error_messages!`
+is deprecated and it will be removed in the next major version.
+To customize the errors styles please run `rails g devise:views` and modify the
+`devise/shared/error_messages` partial.
+ (called from block in _app_views_moussaillons_registrations_new_html_erb___76906214960809837_70060384182840 at /home/hilal/Bureau/Gossip-Project-Facebook-style-master/app/views/moussaillons/registrations/new.html.erb:4)
+  Rendered moussaillons/shared/_links.html.erb (1.6ms)
+  Rendered moussaillons/registrations/new.html.erb within layouts/application (10.0ms)
+  Rendered layouts/_header.html.erb (0.7ms)
+Completed 200 OK in 66ms (Views: 33.2ms | ActiveRecord: 6.1ms)
+
+
+Started GET "/moussaillons/sign_up" for 127.0.0.1 at 2019-10-31 21:00:03 +0100
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering moussaillons/registrations/new.html.erb within layouts/application
+DEPRECATION WARNING: [Devise] `DeviseHelper.devise_error_messages!`
+is deprecated and it will be removed in the next major version.
+To customize the errors styles please run `rails g devise:views` and modify the
+`devise/shared/error_messages` partial.
+ (called from block in _app_views_moussaillons_registrations_new_html_erb___76906214960809837_70060312175820 at /home/hilal/Bureau/Gossip-Project-Facebook-style-master/app/views/moussaillons/registrations/new.html.erb:4)
+  Rendered moussaillons/shared/_links.html.erb (0.9ms)
+  Rendered moussaillons/registrations/new.html.erb within layouts/application (6.1ms)
+  Rendered layouts/_header.html.erb (0.9ms)
+Completed 200 OK in 54ms (Views: 49.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/moussaillons/sign_up" for 127.0.0.1 at 2019-10-31 21:00:04 +0100
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering moussaillons/registrations/new.html.erb within layouts/application
+DEPRECATION WARNING: [Devise] `DeviseHelper.devise_error_messages!`
+is deprecated and it will be removed in the next major version.
+To customize the errors styles please run `rails g devise:views` and modify the
+`devise/shared/error_messages` partial.
+ (called from block in _app_views_moussaillons_registrations_new_html_erb___76906214960809837_70060412671560 at /home/hilal/Bureau/Gossip-Project-Facebook-style-master/app/views/moussaillons/registrations/new.html.erb:4)
+  Rendered moussaillons/shared/_links.html.erb (3.9ms)
+  Rendered moussaillons/registrations/new.html.erb within layouts/application (16.9ms)
+  Rendered layouts/_header.html.erb (1.6ms)
+Completed 200 OK in 85ms (Views: 81.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/moussaillons/sign_up" for 127.0.0.1 at 2019-10-31 21:00:06 +0100
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering moussaillons/registrations/new.html.erb within layouts/application
+DEPRECATION WARNING: [Devise] `DeviseHelper.devise_error_messages!`
+is deprecated and it will be removed in the next major version.
+To customize the errors styles please run `rails g devise:views` and modify the
+`devise/shared/error_messages` partial.
+ (called from block in _app_views_moussaillons_registrations_new_html_erb___76906214960809837_70060390970300 at /home/hilal/Bureau/Gossip-Project-Facebook-style-master/app/views/moussaillons/registrations/new.html.erb:4)
+  Rendered moussaillons/shared/_links.html.erb (3.4ms)
+  Rendered moussaillons/registrations/new.html.erb within layouts/application (12.9ms)
+  Rendered layouts/_header.html.erb (0.9ms)
+Completed 200 OK in 47ms (Views: 43.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/moussaillons/sign_up" for 127.0.0.1 at 2019-10-31 21:00:09 +0100
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering moussaillons/registrations/new.html.erb within layouts/application
+DEPRECATION WARNING: [Devise] `DeviseHelper.devise_error_messages!`
+is deprecated and it will be removed in the next major version.
+To customize the errors styles please run `rails g devise:views` and modify the
+`devise/shared/error_messages` partial.
+ (called from block in _app_views_moussaillons_registrations_new_html_erb___76906214960809837_70060384793220 at /home/hilal/Bureau/Gossip-Project-Facebook-style-master/app/views/moussaillons/registrations/new.html.erb:4)
+  Rendered moussaillons/shared/_links.html.erb (3.2ms)
+  Rendered moussaillons/registrations/new.html.erb within layouts/application (16.6ms)
+  Rendered layouts/_header.html.erb (2.3ms)
+Completed 200 OK in 81ms (Views: 77.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/moussaillons/sign_up" for 127.0.0.1 at 2019-10-31 21:00:10 +0100
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering moussaillons/registrations/new.html.erb within layouts/application
+DEPRECATION WARNING: [Devise] `DeviseHelper.devise_error_messages!`
+is deprecated and it will be removed in the next major version.
+To customize the errors styles please run `rails g devise:views` and modify the
+`devise/shared/error_messages` partial.
+ (called from block in _app_views_moussaillons_registrations_new_html_erb___76906214960809837_47129204308860 at /home/hilal/Bureau/Gossip-Project-Facebook-style-master/app/views/moussaillons/registrations/new.html.erb:4)
+  Rendered moussaillons/shared/_links.html.erb (4.4ms)
+  Rendered moussaillons/registrations/new.html.erb within layouts/application (18.1ms)
+  Rendered layouts/_header.html.erb (1.7ms)
+Completed 200 OK in 96ms (Views: 92.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/moussaillons/sign_in" for 127.0.0.1 at 2019-10-31 21:00:11 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendering moussaillons/sessions/new.html.erb within layouts/application
+  Rendered moussaillons/shared/_links.html.erb (2.4ms)
+  Rendered moussaillons/sessions/new.html.erb within layouts/application (47.1ms)
+  Rendered layouts/_header.html.erb (0.8ms)
+Completed 200 OK in 82ms (Views: 77.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/moussaillons/sign_up" for 127.0.0.1 at 2019-10-31 21:00:12 +0100
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering moussaillons/registrations/new.html.erb within layouts/application
+DEPRECATION WARNING: [Devise] `DeviseHelper.devise_error_messages!`
+is deprecated and it will be removed in the next major version.
+To customize the errors styles please run `rails g devise:views` and modify the
+`devise/shared/error_messages` partial.
+ (called from block in _app_views_moussaillons_registrations_new_html_erb___76906214960809837_70060395794600 at /home/hilal/Bureau/Gossip-Project-Facebook-style-master/app/views/moussaillons/registrations/new.html.erb:4)
+  Rendered moussaillons/shared/_links.html.erb (6.1ms)
+  Rendered moussaillons/registrations/new.html.erb within layouts/application (23.5ms)
+  Rendered layouts/_header.html.erb (0.9ms)
+Completed 200 OK in 91ms (Views: 85.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-10-31 21:00:13 +0100
+Processing by GossipsController#index as HTML
+  Rendering gossips/index.html.erb within layouts/application
+  Rendered gossips/index.html.erb within layouts/application (1.5ms)
+  Rendered layouts/_header.html.erb (0.9ms)
+Completed 200 OK in 25ms (Views: 19.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/moussaillons/sign_in" for 127.0.0.1 at 2019-10-31 21:00:15 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendering moussaillons/sessions/new.html.erb within layouts/application
+  Rendered moussaillons/shared/_links.html.erb (1.9ms)
+  Rendered moussaillons/sessions/new.html.erb within layouts/application (8.9ms)
+  Rendered layouts/_header.html.erb (1.2ms)
+Completed 200 OK in 41ms (Views: 38.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/moussaillons/sign_in" for 127.0.0.1 at 2019-10-31 21:01:46 +0100
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"9lnTi8A5ReqKApE1vNQys1/vsQa2Mz3jG6ZbcfcWh/V3mgih8LEQNVFeP2ywMc072ciEh5vxh7V4z3CE6wMWWg==", "moussaillon"=>{"email"=>"w@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Log in"}
+  [1m[36mMoussaillon Load (0.9ms)[0m  [1m[34mSELECT  "moussaillons".* FROM "moussaillons" WHERE "moussaillons"."email" = $1 ORDER BY "moussaillons"."id" ASC LIMIT $2[0m  [["email", "w@gmail.com"], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Completed 401 Unauthorized in 7ms (ActiveRecord: 1.2ms)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"9lnTi8A5ReqKApE1vNQys1/vsQa2Mz3jG6ZbcfcWh/V3mgih8LEQNVFeP2ywMc072ciEh5vxh7V4z3CE6wMWWg==", "moussaillon"=>{"email"=>"w@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Log in"}
+  Rendering moussaillons/sessions/new.html.erb within layouts/application
+  Rendered moussaillons/shared/_links.html.erb (0.9ms)
+  Rendered moussaillons/sessions/new.html.erb within layouts/application (3.6ms)
+  Rendered layouts/_header.html.erb (0.7ms)
+Completed 200 OK in 203ms (Views: 21.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/moussaillons/sign_in" for 127.0.0.1 at 2019-10-31 21:01:51 +0100
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"xjX7fKqJ/CiOBGLP4UZMATM58eVtUMLE3GBH6GkM8RzXt1Wtc7bEt0E2pRSnOjyMMDorVQ2oBGUqAhzL83PeAg==", "moussaillon"=>{"email"=>"w@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Log in"}
+Completed 401 Unauthorized in 3ms (ActiveRecord: 0.0ms)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"xjX7fKqJ/CiOBGLP4UZMATM58eVtUMLE3GBH6GkM8RzXt1Wtc7bEt0E2pRSnOjyMMDorVQ2oBGUqAhzL83PeAg==", "moussaillon"=>{"email"=>"w@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Log in"}
+  Rendering moussaillons/sessions/new.html.erb within layouts/application
+  Rendered moussaillons/shared/_links.html.erb (3.3ms)
+  Rendered moussaillons/sessions/new.html.erb within layouts/application (16.2ms)
+  Rendered layouts/_header.html.erb (0.8ms)
+Completed 200 OK in 69ms (Views: 64.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/moussaillons/sign_in" for 127.0.0.1 at 2019-10-31 21:01:53 +0100
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"0zjLhqeS2ds3tRt7gmlNY3DZUJGoM/9wiADpCGubBnDCumVXfq3hRPiH3KDEFT3uc9qKIcjLOdF+YrIr8eQpbg==", "moussaillon"=>{"email"=>"w@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Log in"}
+  [1m[36mMoussaillon Load (1.1ms)[0m  [1m[34mSELECT  "moussaillons".* FROM "moussaillons" WHERE "moussaillons"."email" = $1 ORDER BY "moussaillons"."id" ASC LIMIT $2[0m  [["email", "w@gmail.com"], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Completed 401 Unauthorized in 7ms (ActiveRecord: 1.1ms)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"0zjLhqeS2ds3tRt7gmlNY3DZUJGoM/9wiADpCGubBnDCumVXfq3hRPiH3KDEFT3uc9qKIcjLOdF+YrIr8eQpbg==", "moussaillon"=>{"email"=>"w@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Log in"}
+  Rendering moussaillons/sessions/new.html.erb within layouts/application
+  Rendered moussaillons/shared/_links.html.erb (1.2ms)
+  Rendered moussaillons/sessions/new.html.erb within layouts/application (4.8ms)
+  Rendered layouts/_header.html.erb (0.9ms)
+Completed 200 OK in 247ms (Views: 21.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/moussaillons/sign_up" for 127.0.0.1 at 2019-10-31 21:01:55 +0100
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering moussaillons/registrations/new.html.erb within layouts/application
+DEPRECATION WARNING: [Devise] `DeviseHelper.devise_error_messages!`
+is deprecated and it will be removed in the next major version.
+To customize the errors styles please run `rails g devise:views` and modify the
+`devise/shared/error_messages` partial.
+ (called from block in _app_views_moussaillons_registrations_new_html_erb___76906214960809837_70060395203860 at /home/hilal/Bureau/Gossip-Project-Facebook-style-master/app/views/moussaillons/registrations/new.html.erb:4)
+  Rendered moussaillons/shared/_links.html.erb (5.2ms)
+  Rendered moussaillons/registrations/new.html.erb within layouts/application (22.4ms)
+  Rendered layouts/_header.html.erb (1.7ms)
+Completed 200 OK in 106ms (Views: 101.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/moussaillons" for 127.0.0.1 at 2019-10-31 21:02:32 +0100
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"zyg4zWxCHRxy9A1eq7ne/0FdMiQpa81jnkiAD2clCwNa1yAdERuah420DDovU4g5SwhL4Yo+KWgfhmk+MZaqFA==", "moussaillon"=>{"sign_up_code"=>"1234", "username"=>"hilu", "email"=>"hilu@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"S'inscrire"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mMoussaillon Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "moussaillons" WHERE "moussaillons"."email" = $1 LIMIT $2[0m  [["email", "hilu@gmail.com"], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering moussaillons/registrations/new.html.erb within layouts/application
+DEPRECATION WARNING: [Devise] `DeviseHelper.devise_error_messages!`
+is deprecated and it will be removed in the next major version.
+To customize the errors styles please run `rails g devise:views` and modify the
+`devise/shared/error_messages` partial.
+ (called from block in _app_views_moussaillons_registrations_new_html_erb___76906214960809837_70060390796140 at /home/hilal/Bureau/Gossip-Project-Facebook-style-master/app/views/moussaillons/registrations/new.html.erb:4)
+  Rendered /var/lib/gems/2.5.0/gems/devise-4.7.1/app/views/devise/shared/_error_messages.html.erb (1.2ms)
+  Rendered moussaillons/shared/_links.html.erb (1.4ms)
+  Rendered moussaillons/registrations/new.html.erb within layouts/application (13.3ms)
+  Rendered layouts/_header.html.erb (0.9ms)
+Completed 200 OK in 224ms (Views: 30.0ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/moussaillons" for 127.0.0.1 at 2019-10-31 21:04:14 +0100
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"yOohUE91EdpMuIe730GXBSsTAXorA+Xi7K9AYdfKnSTZaI+BlkopRYOKQGCZPeeIKBDbykv7I0MazRtCTbWyOg==", "moussaillon"=>{"sign_up_code"=>"GossipTeam2019", "username"=>"hilu", "email"=>"hilu@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"S'inscrire"}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mMoussaillon Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "moussaillons" WHERE "moussaillons"."email" = $1 LIMIT $2[0m  [["email", "hilu@gmail.com"], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mMoussaillon Create (0.5ms)[0m  [1m[32mINSERT INTO "moussaillons" ("email", "encrypted_password", "username", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "hilu@gmail.com"], ["encrypted_password", "$2a$11$lIDGCcWV5mIW6Aypxt4D0eTFA3eyyI924Hel1//6DRULZtIdKLHEC"], ["username", "hilu"], ["created_at", "2019-10-31 20:04:14.734863"], ["updated_at", "2019-10-31 20:04:14.734863"]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (8.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mMoussaillon Update (0.7ms)[0m  [1m[33mUPDATE "moussaillons" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "current_sign_in_ip" = $4, "last_sign_in_ip" = $5, "updated_at" = $6 WHERE "moussaillons"."id" = $7[0m  [["sign_in_count", 1], ["current_sign_in_at", "2019-10-31 20:04:14.746089"], ["last_sign_in_at", "2019-10-31 20:04:14.746089"], ["current_sign_in_ip", "127.0.0.1/32"], ["last_sign_in_ip", "127.0.0.1/32"], ["updated_at", "2019-10-31 20:04:14.747287"], ["id", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (2.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/
+Completed 302 Found in 205ms (ActiveRecord: 12.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-10-31 21:04:14 +0100
+Processing by GossipsController#index as HTML
+  Rendering gossips/index.html.erb within layouts/application
+  [1m[36mMoussaillon Load (0.3ms)[0m  [1m[34mSELECT  "moussaillons".* FROM "moussaillons" WHERE "moussaillons"."id" = $1 ORDER BY "moussaillons"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/gossips/index.html.erb:3
+  [1m[36mGossip Load (0.6ms)[0m  [1m[34mSELECT "gossips".* FROM "gossips"[0m
+  ↳ app/views/gossips/index.html.erb:12
+  Rendered gossips/index.html.erb within layouts/application (17.2ms)
+  Rendered layouts/_header.html.erb (0.8ms)
+Completed 200 OK in 36ms (Views: 31.8ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/gossips/new" for 127.0.0.1 at 2019-10-31 21:04:38 +0100
+Processing by GossipsController#new as HTML
+  [1m[36mMoussaillon Load (1.3ms)[0m  [1m[34mSELECT  "moussaillons".* FROM "moussaillons" WHERE "moussaillons"."id" = $1 ORDER BY "moussaillons"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/gossips_controller.rb:7
+  Rendering gossips/new.html.erb within layouts/application
+  Rendered gossips/new.html.erb within layouts/application (7.4ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+Completed 200 OK in 104ms (Views: 57.5ms | ActiveRecord: 13.1ms)
+
+
+Started POST "/gossips" for 127.0.0.1 at 2019-10-31 21:05:00 +0100
+Processing by GossipsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"x34VBdDJrtLRVrmMaGllunevTtLOI8k5oQ3+filOf65xe9nP210QQ0CJJq/mCVlxmjDJJkrivDr3oVBF9BJT5Q==", "gossip"=>{"content"=>"ca va petter"}, "commit"=>"Bitcher"}
+  [1m[36mMoussaillon Load (1.4ms)[0m  [1m[34mSELECT  "moussaillons".* FROM "moussaillons" WHERE "moussaillons"."id" = $1 ORDER BY "moussaillons"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/gossips_controller.rb:17
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/gossips_controller.rb:18
+  [1m[36mMoussaillon Load (0.5ms)[0m  [1m[34mSELECT  "moussaillons".* FROM "moussaillons" WHERE "moussaillons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/gossips_controller.rb:18
+  [1m[36mGossip Create (1.2ms)[0m  [1m[32mINSERT INTO "gossips" ("content", "moussaillon_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "ca va petter"], ["moussaillon_id", 1], ["created_at", "2019-10-31 20:05:00.468167"], ["updated_at", "2019-10-31 20:05:00.468167"]]
+  ↳ app/controllers/gossips_controller.rb:18
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/gossips_controller.rb:18
+Redirected to http://localhost:3000/
+Completed 302 Found in 70ms (ActiveRecord: 5.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-10-31 21:05:00 +0100
+Processing by GossipsController#index as HTML
+  Rendering gossips/index.html.erb within layouts/application
+  [1m[36mMoussaillon Load (0.5ms)[0m  [1m[34mSELECT  "moussaillons".* FROM "moussaillons" WHERE "moussaillons"."id" = $1 ORDER BY "moussaillons"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/gossips/index.html.erb:3
+  [1m[36mGossip Load (0.4ms)[0m  [1m[34mSELECT "gossips".* FROM "gossips"[0m
+  ↳ app/views/gossips/index.html.erb:12
+  [1m[36mMoussaillon Load (0.4ms)[0m  [1m[34mSELECT  "moussaillons".* FROM "moussaillons" WHERE "moussaillons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/gossips/index.html.erb:18
+  Rendered gossips/index.html.erb within layouts/application (8.1ms)
+  Rendered layouts/_header.html.erb (0.7ms)
+Completed 200 OK in 28ms (Views: 25.4ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/gossips/new" for 127.0.0.1 at 2019-10-31 21:05:04 +0100
+Processing by GossipsController#new as HTML
+  [1m[36mMoussaillon Load (1.5ms)[0m  [1m[34mSELECT  "moussaillons".* FROM "moussaillons" WHERE "moussaillons"."id" = $1 ORDER BY "moussaillons"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/gossips_controller.rb:7
+  Rendering gossips/new.html.erb within layouts/application
+  Rendered gossips/new.html.erb within layouts/application (6.1ms)
+  Rendered layouts/_header.html.erb (1.5ms)
+Completed 200 OK in 78ms (Views: 67.4ms | ActiveRecord: 1.5ms)
+
+
+Started DELETE "/moussaillons/sign_out" for 127.0.0.1 at 2019-10-31 21:05:06 +0100
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"zkAw0T+WLgnmUp9zIh5iOnyTxjX831qwyRnaPZrmUxbfwp4A5qkWlilgWKhkYhK3f5AchZwnnBE/e4EeAJl8CA=="}
+  [1m[36mMoussaillon Load (0.6ms)[0m  [1m[34mSELECT  "moussaillons".* FROM "moussaillons" WHERE "moussaillons"."id" = $1 ORDER BY "moussaillons"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/
+Completed 302 Found in 10ms (ActiveRecord: 1.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-10-31 21:05:06 +0100
+Processing by GossipsController#index as HTML
+  Rendering gossips/index.html.erb within layouts/application
+  Rendered gossips/index.html.erb within layouts/application (1.2ms)
+  Rendered layouts/_header.html.erb (0.7ms)
+Completed 200 OK in 19ms (Views: 18.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/moussaillons/sign_up" for 127.0.0.1 at 2019-10-31 21:05:08 +0100
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering moussaillons/registrations/new.html.erb within layouts/application
+DEPRECATION WARNING: [Devise] `DeviseHelper.devise_error_messages!`
+is deprecated and it will be removed in the next major version.
+To customize the errors styles please run `rails g devise:views` and modify the
+`devise/shared/error_messages` partial.
+ (called from block in _app_views_moussaillons_registrations_new_html_erb___76906214960809837_70060381010440 at /home/hilal/Bureau/Gossip-Project-Facebook-style-master/app/views/moussaillons/registrations/new.html.erb:4)
+  Rendered moussaillons/shared/_links.html.erb (5.3ms)
+  Rendered moussaillons/registrations/new.html.erb within layouts/application (22.9ms)
+  Rendered layouts/_header.html.erb (1.2ms)
+Completed 200 OK in 76ms (Views: 69.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/moussaillons/sign_in" for 127.0.0.1 at 2019-10-31 21:05:19 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendering moussaillons/sessions/new.html.erb within layouts/application
+  Rendered moussaillons/shared/_links.html.erb (1.7ms)
+  Rendered moussaillons/sessions/new.html.erb within layouts/application (6.5ms)
+  Rendered layouts/_header.html.erb (1.2ms)
+Completed 200 OK in 44ms (Views: 42.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/moussaillons/sign_in" for 127.0.0.1 at 2019-10-31 21:05:35 +0100
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Vb0+LiofCg61DxjqcvKshKxSr4rPSIFMoNcst2C3E3zZmALazaGHyP17Bgpar4fLudOr5p3P+z5mALaemghYSA==", "moussaillon"=>{"email"=>"hilu@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Log in"}
+  [1m[36mMoussaillon Load (0.5ms)[0m  [1m[34mSELECT  "moussaillons".* FROM "moussaillons" WHERE "moussaillons"."email" = $1 ORDER BY "moussaillons"."id" ASC LIMIT $2[0m  [["email", "hilu@gmail.com"], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mMoussaillon Update (0.3ms)[0m  [1m[33mUPDATE "moussaillons" SET "remember_created_at" = $1, "updated_at" = $2 WHERE "moussaillons"."id" = $3[0m  [["remember_created_at", "2019-10-31 20:05:35.637855"], ["updated_at", "2019-10-31 20:05:35.638801"], ["id", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (8.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mMoussaillon Update (0.7ms)[0m  [1m[33mUPDATE "moussaillons" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "updated_at" = $3 WHERE "moussaillons"."id" = $4[0m  [["sign_in_count", 2], ["current_sign_in_at", "2019-10-31 20:05:35.650760"], ["updated_at", "2019-10-31 20:05:35.652364"], ["id", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (2.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/
+Completed 302 Found in 208ms (ActiveRecord: 12.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-10-31 21:05:35 +0100
+Processing by GossipsController#index as HTML
+  Rendering gossips/index.html.erb within layouts/application
+  [1m[36mMoussaillon Load (0.3ms)[0m  [1m[34mSELECT  "moussaillons".* FROM "moussaillons" WHERE "moussaillons"."id" = $1 ORDER BY "moussaillons"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/gossips/index.html.erb:3
+  [1m[36mGossip Load (0.3ms)[0m  [1m[34mSELECT "gossips".* FROM "gossips"[0m
+  ↳ app/views/gossips/index.html.erb:12
+  [1m[36mMoussaillon Load (0.3ms)[0m  [1m[34mSELECT  "moussaillons".* FROM "moussaillons" WHERE "moussaillons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/gossips/index.html.erb:18
+  Rendered gossips/index.html.erb within layouts/application (4.6ms)
+  Rendered layouts/_header.html.erb (0.6ms)
+Completed 200 OK in 23ms (Views: 20.7ms | ActiveRecord: 0.8ms)
+
+
