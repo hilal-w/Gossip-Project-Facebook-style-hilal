@@ -15,3 +15,4 @@ heroku run rails db:seed
 
                           sign_up_code: "GossipTeam2019"
 # Gossip-Project-Facebook-style-hilal
+# Gossip-Project-Facebook-style-hilal
